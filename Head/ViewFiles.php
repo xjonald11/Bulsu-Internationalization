@@ -1,7 +1,14 @@
 <?php
-    include_once 'HeadSession.php';
     include_once '../connection.php';
-
+    include_once 'AdminSession.php';
+    $uname = $_SESSION['email'];
+    $password = $_SESSION['password'];
+    $chekUser = mysqli_query($con,"Select * from user where email= '$uname' AND password = '$password'") or die(mysqli_error($con));
+    $row = mysqli_fetch_array($chekUser);
+    $fname = $row['fname'];
+    $lname = $row['lname'];
+    
+    $username = $fname . " ".$lname;
     $result = mysqli_query($con, "SELECT * FROM uploaded_files");
 ?>
 

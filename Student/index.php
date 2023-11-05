@@ -96,7 +96,8 @@
                 <li><a href=""></a></li>
                 <li><a href="RequestFile.php">Request file</a></li>
                     <li><a href="ViewRequests.php">View Request file</a></li>
-                    <li><a href="EnterVisaInfo.php">Visa Info</a></li>
+                    <li><a href="EnterVisaInfo.php">Student Info</a></li>
+                    <li><a href="ViewEditInfo.php">Edit Info</a></li>
                     <li><a href="ViewUser.php">My Profile</a></li>
                 </ul>
             </div>

@@ -123,9 +123,11 @@ if(isset($_GET['id'])) {
 </div>
     </div>
 
-    <footer class="mt-auto text-center bg-dark text-white py-2">
-        &copy; Jonald Acosta 2023
-    </footer>
+ <!--   <footer class="mt-auto text-center bg-dark text-white py-3">
+    <div class="container">
+        <span class="text-muted">&copy; Jonald Acosta 2023</span>
+    </div>
+</footer> -->
 
 </body>
 </html>

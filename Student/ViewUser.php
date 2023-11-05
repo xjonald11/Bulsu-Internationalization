@@ -73,7 +73,8 @@ $res=mysqli_query($con,$sql) or die(mysqli_error($con));
                 <li><a href=""></a></li>
                 <li><a href="RequestFile.php">Request file</a></li>
                     <li><a href="ViewRequests.php">View Request file</a></li>
-                    <li><a href="EnterVisaInfo.php">Visa Info</a></li>
+                    <li><a href="EnterVisaInfo.php">Student Info</a></li>
+                    <li><a href="ViewEditInfo.php">Edit Info</a></li>
                     <li><a href="ViewUser.php">My Profile</a></li>
             </ul>
         </div>
@@ -116,9 +117,12 @@ $res=mysqli_query($con,$sql) or die(mysqli_error($con));
     </div>
 </div>
 
-<footer class="mt-auto text-center bg-dark text-white py-2">
-    &copy; Jonald Acosta 2024
-</footer>
+ <!--   <footer class="mt-auto text-center bg-dark text-white py-3">
+    <div class="container">
+        <span class="text-muted">&copy; Jonald Acosta 2023</span>
+    </div>
+</footer> -->
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

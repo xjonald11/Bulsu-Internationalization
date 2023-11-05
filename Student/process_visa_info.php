@@ -32,10 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if (mysqli_query($con, $sql)) {
         // Data saved successfully
+        
         header("Location: EnterVisaInfo.php?success=1");
         exit();
     } else {
         // Error occurred while saving data
+        echo "<script>alert('Please try again.'); window.history.go(-1);</script></script>";
         header("Location: EnterVisaInfo.php?error=1");
         exit();
     }
