@@ -1,6 +1,6 @@
 <?php 
     session_start();
-        include_once '../connection.php';
+    include_once '../connection.php';
     if(isset($_POST['submit'])){
         $fname = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['fname'])));
         $lname = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['lname'])));
@@ -15,7 +15,7 @@
         {
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
-            header('location:Success.php');
+            echo "<script>alert('Update successful!'); window.history.go(-1);</script>";
         }
     }
 ?>

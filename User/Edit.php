@@ -211,7 +211,7 @@
 
     <div class="container mt-5">
         <h2 class="text-center">Edit User Form</h2>
-        <form name="Myform" id="Myform" action="User/EditProcess.php?id='<?php echo $id;?>'" method="post" onsubmit="return(Validate());">
+        <form name="Myform" id="Myform" action="EditProcess.php?id='<?php echo $id;?>'" method="post" onsubmit="return(Validate());">
             <div id="error" class="text-danger font-weight-bold mb-3"></div>
             <div class="row justify-content-center">
                 <div class="col-md-4">
@@ -292,7 +292,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                    <a class="btn btn-primary" href="../logout.php">Logout</a>
                 </div>
             </div>
         </div>

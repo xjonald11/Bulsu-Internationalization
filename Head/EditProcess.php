@@ -15,7 +15,7 @@
         {
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
-            header('location:Success.php');
+            echo "<script>alert('Update successful!'); window.history.go(-1);</script>";
         }
     }
 ?>
