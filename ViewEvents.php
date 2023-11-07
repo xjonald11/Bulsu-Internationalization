@@ -220,7 +220,9 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
                     echo "<td>".$row['event_date']."</td>";
                     echo "<td>".$row['description']."</td>";
                     echo "<td>
-                            <a href='ViewEvent.php?id=".$row['id']."' class='btn btn-primary'>View</a>
+                    <button class='btn btn-primary view-event-btn' data-toggle='modal' data-target='#viewEventModal' data-id='".$row['id']."'>View</button>
+
+
                             <a href='EditEvent.php?id=".$row['id']."' class='btn btn-success'>Edit</a>
                             <a href='DeleteEvent.php?id=".$row['id']."' class='btn btn-danger'>Delete</a>
                           </td>";
@@ -230,6 +232,43 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
             </tbody>
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).on('click', '.view-event-btn', function() {
+        var eventId = $(this).data('id');
+        $('#viewEventModal').modal('show');
+
+        $.ajax({
+            url: 'getEventDetails.php', // Create a PHP file (getEventDetails.php) to retrieve event details
+            type: 'POST',
+            data: { id: eventId },
+            success: function(response) {
+                $('#eventDetails').html(response);
+            }
+        });
+    });
+</script>
+
+
+    <div class='modal fade' id='viewEventModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalLabel'>Event Details</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                <div id='eventDetails'></div>
+            </div>
+            <div class='modal-footer'>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
  <!-- /.container-fluid --> 

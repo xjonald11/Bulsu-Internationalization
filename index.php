@@ -41,6 +41,24 @@ if ($numStudentResult && mysqli_num_rows($numStudentResult) > 0) {
 }
 
 ?>
+<?php
+
+
+    // Retrieve students with upcoming visa expirations within 30 days
+    $today = date('Y-m-d');
+    $thirtyDaysLater = date('Y-m-d', strtotime($today . ' + 30 days'));
+    $upcomingVisaExpirationsQuery = mysqli_query($con, "SELECT * FROM stud_visa WHERE VISA_EXPIRATION BETWEEN '$today' AND '$thirtyDaysLater'");
+
+    // Check if there are any upcoming expirations
+    if ($upcomingVisaExpirationsQuery && mysqli_num_rows($upcomingVisaExpirationsQuery) > 0) {
+        $upcomingExpirations = mysqli_fetch_all($upcomingVisaExpirationsQuery, MYSQLI_ASSOC);
+    } else {
+        $upcomingExpirations = [];
+    }
+?>
+<?php
+    $numUpcomingExpirations = count($upcomingExpirations);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -240,26 +258,46 @@ if ($numStudentResult && mysqli_num_rows($numStudentResult) > 0) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-3 mb-4">
+    <div class="card border-left-danger shadow h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Total Students</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalStudents; ?></div>
+                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                        Upcoming Visa Expirations (within 30 days)</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $numUpcomingExpirations; ?></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-user fa-2x text-gray-300"></i>
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+        <div class="col-lg-3 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total Students</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalStudents; ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>            
 
                 <!-- /.container-fluid -->
 

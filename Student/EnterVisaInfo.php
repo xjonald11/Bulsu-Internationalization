@@ -217,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
     <div class="col-md-4">
                 <div class="form-group">
-        <label for="SEX">Gender</label>
+        <label for="SEX">Sex</label>
         <select class="form-control" id="SEX" name="SEX" onkeydown="HideError()" required>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
