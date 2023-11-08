@@ -12,11 +12,11 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 text-center mt-5">
-                <img src="https://via.placeholder.com/400" alt="Error 404" class="img-fluid">
+            <div class="col-md-6 text-center mt-5"> <!-- Added "text-center" class here -->
+                <img src="image/oia.png" alt="Error 404" class="img-fluid">
                 <h1 class="mt-4">Oops! Page Not Found</h1>
                 <p class="text-muted">The page you are looking for could not be found.</p>
-                <a href="/" class="btn btn-primary">Go Back to Homepage</a>
+                <a href="index.php" class="btn btn-primary">Go Back to Homepage</a>
             </div>
         </div>
     </div>

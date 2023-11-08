@@ -34,7 +34,38 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+    @media (max-width: 768px) {
+        /* Small devices (tablets and phones) */
+        .about-img {
+            max-width: 100%;
+        }
+    }
 
+    @media (min-width: 768px) and (max-width: 992px) {
+        /* Medium devices (tablets) */
+        .about-img {
+            max-width: 80%;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        /* Large devices (desktops) */
+        .about-img {
+            max-width: 60%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        /* Extra large devices (large desktops) */
+        .about-img {
+            max-width: 50%;
+        }
+    }
+    ul {
+        list-style-type: none; /* This removes the bullets */
+    }
+</style>
 </head>
 
 <body id="page-top">
@@ -46,7 +77,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                    
                 </div>
@@ -205,20 +236,45 @@
 
                 
                 <!-- About Us Content -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    About Bulsu Internationalization
-                </div>
-                <div class="card-body">
-                    <p>Welcome to Bulacan State University (Bulsu) Internationalization!</p>
-                    <p>Our mission is to provide students and partners with opportunities for global experiences, education, and collaboration. We believe in the power of international connections to enrich lives and broaden horizons.</p>
-                    <p>At Bulsu Internationalization, we organize various events and programs that foster cultural exchange, academic growth, and international understanding. We aim to make the world a smaller, more interconnected place, one student at a time.</p>
-                    <p>Join us in our journey to create a global community right here at Bulacan State University. Whether you're a student looking for international experiences or a partner interested in collaborating with us, we're here to help you on your internationalization path.</p>
-                </div>
+                <div class="container-fluid">
+                <div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                About Bulsu Internationalization
             </div>
+            <div class="card-body text-center"> 
+            <img src="image/oia.png" alt="Internationalization Logo" class="img-fluid mb-4 about-img">
+
+                <p>Welcome to Bulacan State University (Bulsu) Internationalization!</p>
+                <p>Our mission is to provide students and partners with opportunities for global experiences, education, and collaboration. We believe in the power of international connections to enrich lives and broaden horizons.</p>
+                <p>At Bulsu Internationalization, we organize various events and programs that foster cultural exchange, academic growth, and international understanding. We aim to make the world a smaller, more interconnected place, one student at a time.</p>
+                <p>Join us in our journey to create a global community right here at Bulacan State University. Whether you're a student looking for international experiences or a partner interested in collaborating with us, we're here to help you on your internationalization path.</p>
+                </div>
+        </div>
+    </div>
+</div>
+
+<!-- About the Developers Content -->
+
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                About the Developers
+            </div>
+            <div class="card-body text-center">
+            <img src="image/slide.jpg" alt="Developer Logo" class="img-fluid mb-4 about-img">
+
+                <p>One Slide Man is a small company composed of Business Analytics literate students, namely Acosta, Arceo, Eligio, Espino, Idanio, and Santos. We are passionate about utilizing data to drive informed decision-making. Our goal is to provide innovative systems and data-related solutions to bridge the gaps in proper data utilization.</p>
+                <p>SLIDE represents the core values that guide our work:</p>
+                <ul>
+                    <li><strong>Strategic:</strong> We focus on creating data-driven strategies that contribute to organizational success.</li>
+                    <li><strong>Leadership:</strong> We lead by example and inspire others to harness the power of data.</li>
+                    <li><strong>Initiatives:</strong> We take proactive steps to implement data-driven initiatives that deliver value.</li>
+                    <li><strong>Digital Excellence:</strong> We strive for excellence in all our digital endeavors, aiming for the highest standards in data analysis and system development.</li>
+                </ul>
+                </div>
         </div>
     </div>
 </div>
