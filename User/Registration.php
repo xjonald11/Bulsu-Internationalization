@@ -48,7 +48,7 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                    
                 </div>
@@ -65,7 +65,7 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
                     <span>Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../About.php">
+                <a class="nav-link" href="About.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>About</span></a>
             </li>
