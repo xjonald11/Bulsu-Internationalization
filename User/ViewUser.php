@@ -65,7 +65,7 @@ $res = mysqli_query($con, $sql) or die(mysqli_error($con));
                     <span>Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="About.php">
+                <a class="nav-link" href="../About.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>About</span></a>
             </li>
