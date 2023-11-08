@@ -10,10 +10,12 @@
         
         $id = $_REQUEST['id'];
         
-        $insertqry = mysqli_query($con,"Update user set fname = '$fname',lname = '$lname', phone = '$phone',email = '$email' type='$Usertype' where id = $id") or die(mysqli_error($con));
+        $insertqry = mysqli_query($con,"Update user set fname = '$fname',lname = '$lname', phone = '$phone',email = '$email',type='$Usertype' where id = '$id'") or die(mysqli_error($con));
         if($insertqry)
         {
             header('location:../index.php');
         }
+
     }
+
 ?>

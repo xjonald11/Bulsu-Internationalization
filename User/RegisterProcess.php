@@ -3,11 +3,12 @@
     if(isset($_POST['submit'])){
         $fname = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['fname'])));
         $lname = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['lname'])));
+        $password = md5($lname);
         $phone = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['mobile'])));
         $email = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['email'])));
         $Usertype = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['usertype'])));
         
-        $insertqry = mysqli_query($con,"Insert into user (fname,lname,phone,email,password,type) values('$fname','$lname','$phone','$email','$lname','$Usertype')") or die(mysqli_error($con));
+        $insertqry = mysqli_query($con,"Insert into user (fname,lname,phone,email,password,type) values('$fname','$lname','$phone','$email','$password','$Usertype')") or die(mysqli_error($con));
         if($insertqry)
         {
             echo "<script>alert('Success!'); window.history.go(-1);</script>";

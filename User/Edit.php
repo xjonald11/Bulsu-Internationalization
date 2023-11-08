@@ -16,10 +16,10 @@
     $password = $_SESSION['password'];
     $chekUser = mysqli_query($con,"Select * from user where email= '$uname' AND password = '$password'") or die(mysqli_error($con));
     $row = mysqli_fetch_array($chekUser);
-    $fname = $row['fname'];
-    $lname = $row['lname'];
+    $afname = $row['fname'];
+    $alname = $row['lname'];
     
-    $username = $fname . " ".$lname;
+    $username = $afname . " ".$alname;
     
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,6 @@
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -211,7 +210,7 @@
 
     <div class="container mt-5">
         <h2 class="text-center">Edit User Form</h2>
-        <form name="Myform" id="Myform" action="EditProcess.php?id='<?php echo $id;?>'" method="post" onsubmit="return(Validate());">
+        <form name="Myform" id="Myform" action="EditProcess.php?id=<?php echo $id;?>" method="post" onsubmit="return(Validate());">
             <div id="error" class="text-danger font-weight-bold mb-3"></div>
             <div class="row justify-content-center">
                 <div class="col-md-4">
@@ -242,7 +241,7 @@
                             <option value="Students">Students</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </form>

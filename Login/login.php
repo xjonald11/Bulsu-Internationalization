@@ -73,7 +73,7 @@
                                             <input type="text" class="form-control form-control-user" name="uname" id="uname" placeholder="Username" onkeydown="HideError()">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" onkeydown="HideError()">
+                                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" minlength="8" onkeydown="HideError()">
                                         </div>
                                         <div class="form-group text-center">
                                             <input type="submit" class="btn btn-primary" name="submit" value="Login" />

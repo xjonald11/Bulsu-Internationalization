@@ -5,7 +5,7 @@
         include '../connection.php';
         
         $uname = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['uname'])));
-        $password = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['password'])));
+        $password = htmlentities(stripslashes(mysqli_real_escape_string($con,md5($_POST['password']))));
         
         $userqry = mysqli_query($con,"select * from user where email = '$uname' AND password = '$password'") or die(mysqli_error($con));
         $countUser = mysqli_num_rows($userqry);
