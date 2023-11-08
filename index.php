@@ -108,7 +108,11 @@ if ($numStudentResult && mysqli_num_rows($numStudentResult) > 0) {
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="About.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>About</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -150,7 +154,6 @@ if ($numStudentResult && mysqli_num_rows($numStudentResult) > 0) {
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Partners</span></a>
             </li>
->
 
             <!-- Divider -->
             <hr class="sidebar-divider">

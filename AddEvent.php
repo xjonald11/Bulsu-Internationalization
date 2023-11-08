@@ -86,7 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="About.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>About</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 

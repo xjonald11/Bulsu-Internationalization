@@ -65,7 +65,11 @@ $res=mysqli_query($con,$sql) or die(mysqli_error($con));
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="About.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>About</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -92,6 +96,7 @@ $res=mysqli_query($con,$sql) or die(mysqli_error($con));
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>My Profile</span></a>
             </li>
+
 
 
             <!-- Divider -->

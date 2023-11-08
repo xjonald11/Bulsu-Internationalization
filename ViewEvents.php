@@ -64,14 +64,16 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="About.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>About</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+    
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">

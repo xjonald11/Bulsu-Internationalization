@@ -1,10 +1,8 @@
 <?php
-include_once '../connection.php';
+    include_once 'StudentsSession.php';
+    include_once '../connection.php';
 
-$result = mysqli_query($con, "SELECT * FROM calendar_events");
-?>
-<?php
-    include_once '../AdminSession.php';
+    // Check if the user is logged in
     $uname = $_SESSION['email'];
     $password = $_SESSION['password'];
     $chekUser = mysqli_query($con,"Select * from user where email= '$uname' AND password = '$password'") or die(mysqli_error($con));
@@ -13,9 +11,9 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
     $lname = $row['lname'];
     
     $username = $fname . " ".$lname;
+    ?>  
     
-?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -48,7 +46,7 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                    
                 </div>
@@ -58,9 +56,9 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="../index.php">
+          <!-- Nav Item - Dashboard -->
+          <li class="nav-item active">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
@@ -72,6 +70,7 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Heading -->
 
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -79,37 +78,35 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>User</span>
+                    <span>Files</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../User/Registration.php">Add user</a>
-                        <a class="collapse-item" href="../User/ViewUser.php">View Users</a>
+                        <a class="collapse-item" href="RequestFile.php">Request File</a>
+                        <a class="collapse-item" href="ViewRequests.php">View Request File</a>
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ViewEditInfo.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Student VISA Info</span></a>
+            </li> 
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-calendar-alt"></i>
-                    <span>Events</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-    
-                        <a class="collapse-item" href="../AddEvent.php">Add Events</a>
-                        <a class="collapse-item" href="../ViewEvents.php">View Events</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="EnterVisaInfo.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Edit VISA Info</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="AddPartner.php">
+                <a class="nav-link" href="ViewUser.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Partners</span></a>
+                    <span>My Profile</span></a>
             </li>
+
+
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -203,50 +200,30 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
 
                 <!-- Begin Page Content -->
 
-    <div id="RegContainer" class="container mt-5">
-        <h2 class="text-center">User Registration Form</h2>
-        <form name="Myform" id="Myform" action="RegisterProcess.php" method="post" onsubmit="return Validate();">
-            <div id="error" class="text-danger font-weight-bold mb-3"></div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="fname">First Name</label>
-                        <input type="text" class="form-control" id="fname" name="fname" onkeydown="HideError()" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name</label>
-                        <input type="text" class="form-control" id="lname" name="lname" onkeydown="HideError()" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile">Phone Number</label>
-                        <input type="text" class="form-control" id="mobile" name="mobile" maxlength="10" onkeydown="HideError()" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="text" class="form-control" id="email" name="email" onkeydown="HideError()" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="usertype">User Type</label>
-                        <select class="form-control" id="usertype" name="usertype" onkeydown="HideError()" required>
-                            <option value="user" selected>Select User type</option>
-                            <option value="Admin">Admin</option>
-                            <option value="Director">Director</option>
-                            <option value="Head">Head</option>
-                            <option value="Clerk">Clerk</option>
-                            <option value="Students">Students</option>
-                        </select>
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                
+                <!-- About Us Content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    About Bulsu Internationalization
+                </div>
+                <div class="card-body">
+                    <p>Welcome to Bulacan State University (Bulsu) Internationalization!</p>
+                    <p>Our mission is to provide students and partners with opportunities for global experiences, education, and collaboration. We believe in the power of international connections to enrich lives and broaden horizons.</p>
+                    <p>At Bulsu Internationalization, we organize various events and programs that foster cultural exchange, academic growth, and international understanding. We aim to make the world a smaller, more interconnected place, one student at a time.</p>
+                    <p>Join us in our journey to create a global community right here at Bulacan State University. Whether you're a student looking for international experiences or a partner interested in collaborating with us, we're here to help you on your internationalization path.</p>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+</div>
 
- 
 
-    <!-- /.container-fluid -->
+                <!-- /.container-fluid -->
 
-    </div>
+            </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -303,3 +280,4 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
 </body>
 
 </html>
+
