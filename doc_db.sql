@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2023 at 02:44 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Nov 08, 2023 at 08:02 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `calendar_events` (
   `description` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `calendar_events`
@@ -55,7 +55,7 @@ CREATE TABLE `file_requests` (
   `student_email` varchar(255) NOT NULL,
   `requested_file` text NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `file_requests`
@@ -76,7 +76,7 @@ CREATE TABLE `headupload` (
   `description` text DEFAULT NULL,
   `status` varchar(20) NOT NULL,
   `file_content` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `headupload`
@@ -96,7 +96,7 @@ CREATE TABLE `partner_profiles` (
   `partner_name` varchar(255) NOT NULL,
   `partner_description` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `partner_profiles`
@@ -134,7 +134,7 @@ CREATE TABLE `stud_visa` (
   `RECORD` varchar(255) DEFAULT NULL,
   `VISA_STATUS_PASSPORT` varchar(50) DEFAULT NULL,
   `VISA_STATUS_PASSPORT_DESCRIPTION` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `stud_visa`
@@ -156,7 +156,7 @@ CREATE TABLE `uploaded_files` (
   `description` text DEFAULT NULL,
   `status` varchar(50) NOT NULL,
   `file_content` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `uploaded_files`
@@ -177,23 +177,24 @@ CREATE TABLE `user` (
   `lname` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `type`) VALUES
-(10, 'Charlyn', 'Rosales', '9916196596', 'charlynrosales@gmail.ccom', 'Rosales', 'Director'),
-(11, 'Dianne Trixie', 'Arceo', '999999999', 'diannetrixieareco@gmail.com', 'qweewr', 'Head'),
-(14, 'Laurence', 'Idanio', '987654322', 'laurenceidanio@gmail.com', 'qwerty', 'Clerk'),
-(21, 'Jonald', 'Acosta', '09994567036', 'jonald.acosta.c@bulsu.edu.ph', 'Acosta', 'Admin'),
-(22, 'Gillian', 'Eligio', '987435522', 'gilian@gmail.com', 'Eligio', 'Clerk'),
-(23, 'Kurt Allen', 'Santos', '987435522', 'kurtalln@gmail.com', 'Santos', 'Students'),
-(24, 'Fname', 'Lname', '0987654212', 'Fname@gmail.com', 'Lname', 'Students'),
-(25, 'Jonald', 'Acosta', '9916196596', 'jonald.acosta.c@bulsu.edu.ph', 'AcostaC', 'Students');
+(10, 'Charlyn', 'Rosales', '9916196596', 'charlynrosales@gmail.ccom', '179ad45c6ce2cb97cf1029e212046e81', 'Director'),
+(11, 'Dianne Trixie', 'Arceo', '999999999', 'diannetrixieareco@gmail.com', '179ad45c6ce2cb97cf1029e212046e81', 'Head'),
+(14, 'Laurence', 'Idanio', '987654322', 'laurenceidanio@gmail.com', '179ad45c6ce2cb97cf1029e212046e81', 'Clerk'),
+(21, 'Jonald', 'Acosta', '09994567036', 'jonald.acosta.c@bulsu.edu.ph', '179ad45c6ce2cb97cf1029e212046e81', 'Admin'),
+(22, 'Gillian', 'Eligio', '987435522', 'gilian@gmail.com', '179ad45c6ce2cb97cf1029e212046e81', 'Clerk'),
+(23, 'Kurt Allen', 'Santos', '987435522', 'kurtalln@gmail.com', '179ad45c6ce2cb97cf1029e212046e81', 'Students'),
+(24, 'Fname', 'Lname', '0987654212', 'Fname@gmail.com', '179ad45c6ce2cb97cf1029e212046e81', 'Students'),
+(25, 'Jonald', 'Acosta', '9916196596', 'sjonald.acosta.c@bulsu.edu.ph', '179ad45c6ce2cb97cf1029e212046e81', 'Students'),
+(29, 'test1', 'testpass', 'test', 'test@gmail.com', '179ad45c6ce2cb97cf1029e212046e81', 'Students');
 
 --
 -- Indexes for dumped tables
@@ -285,7 +286,7 @@ ALTER TABLE `uploaded_files`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
