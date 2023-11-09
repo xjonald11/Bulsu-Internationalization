@@ -16,6 +16,7 @@ $known_mime_types=array(
 "exe" => "application/octet-stream",
 "zip" => "application/zip",
 "doc" => "application/msword",
+"docx" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 "xls" => "application/vnd.ms-excel",
 "ppt" => "application/vnd.ms-powerpoint",
 "gif" => "image/gif",
@@ -88,6 +89,6 @@ die('Error - cannot open file.');
 die();
 }
 set_time_limit(0);
-$file_path='../upload/'.$_REQUEST['f'];
+$file_path='../uploads/'.$_REQUEST['filename'];
 output_file($file_path, ''.$_REQUEST['filename'].'', 'text/plain');
 ?>
