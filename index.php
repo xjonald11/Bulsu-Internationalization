@@ -1,33 +1,22 @@
 <?php
-    include_once 'AdminSession.php';
-    include_once 'connection.php';
+include_once 'AdminSession.php';
+include_once 'connection.php';
 
-    // Check if the user is logged in
-    $uname = $_SESSION['email'];
-    $password = $_SESSION['password'];
-    $chekUser = mysqli_query($con,"Select * from user where email= '$uname' AND password = '$password'") or die(mysqli_error($con));
-    $row = mysqli_fetch_array($chekUser);
-    $fname = $row['fname'];
-    $lname = $row['lname'];
-    
-    $username = $fname . " ".$lname;
-    ?>  
-    <?php
-// ...
+$uname = $_SESSION['email'];
+$password = $_SESSION['password'];
+$chekUser = mysqli_query($con,"SELECT * FROM user WHERE email= '$uname' AND password = '$password'") or die(mysqli_error($con));
+$row = mysqli_fetch_array($chekUser);
+$fname = $row['fname'];
+$lname = $row['lname'];
 
-$latestEventResult = mysqli_query($con, "SELECT * FROM calendar_events ORDER BY event_date DESC LIMIT 1");
+$username = $fname . " " . $lname;
 
+$activeEventsQuery = mysqli_query($con, "SELECT * FROM calendar_events WHERE archived = 0");
 
-// Check if there are any results
-if ($latestEventResult && mysqli_num_rows($latestEventResult) > 0) {
-    $latestEvent = mysqli_fetch_assoc($latestEventResult);
-    $latestEventTitle = $latestEvent['event_title'];
-    $latestEventDate = $latestEvent['event_date'];
-    $latestEventDescription = $latestEvent['description'];
+if ($activeEventsQuery && mysqli_num_rows($activeEventsQuery) > 0) {
+    $activeEvents = mysqli_fetch_all($activeEventsQuery, MYSQLI_ASSOC);
 } else {
-    $latestEventTitle = "No events found";
-    $latestEventDate = "";
-    $latestEventDescription = "";
+    $activeEvents = [];
 }
 
 $numStudentResult = mysqli_query($con, "SELECT COUNT(*) AS total_students FROM user WHERE type = 'Students'");
@@ -154,6 +143,11 @@ if ($numStudentResult && mysqli_num_rows($numStudentResult) > 0) {
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Partners</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ViewPartnerProfiles.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>View Partners</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -249,18 +243,21 @@ if ($numStudentResult && mysqli_num_rows($numStudentResult) > 0) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    Latest Event
-                                </div>
-                                <div class="card-body">
-                                    <h3><?php echo $latestEventTitle; ?></h3>
-                                    <p>Date: <?php echo $latestEventDate; ?></p>
-                                    <p>Description: <?php echo $latestEventDescription; ?></p>
+                        <?php foreach ($activeEvents as $event) : ?>
+                            <div class="col-lg-12 mb-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <?php echo $event['event_title']; ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3><?php echo $event['event_title']; ?></h3>
+                                        <p>Date: <?php echo $event['event_date']; ?></p>
+                                        <p>Description: <?php echo $event['description']; ?></p>
+                                        <!-- Add other event details or actions as needed -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endforeach; ?>
                         <div class="container-fluid">
     <div class="row">
     <div class="col-lg-3 mb-4">

@@ -225,6 +225,10 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
                 <input type="text" class="form-control" name="partner_name" required>
             </div>
             <div class="form-group">
+            <label for="department_head">Department Head</label>
+            <input type="text" class="form-control" name="department_head" required>
+        </div>
+            <div class="form-group">
                 <label for="partner_description">Partners Description</label>
                 <textarea class="form-control" name="partner_description" rows="3" required></textarea>
             </div>

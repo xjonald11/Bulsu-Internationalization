@@ -219,7 +219,7 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
                     </div>
                     <div class="form-group">
                         <label for="mobile">Phone Number</label>
-                        <input type="text" class="form-control" id="mobile" name="mobile" maxlength="10" onkeydown="HideError()" required>
+                        <input type="text" class="form-control" id="mobile" name="mobile" maxlength="11" onkeydown="HideError()" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>

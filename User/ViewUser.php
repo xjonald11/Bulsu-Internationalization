@@ -1,8 +1,27 @@
 <?php
 include_once '../connection.php';
-$sql = "SELECT * FROM user";
+// Check if the user clicked on the unarchive button
+if (isset($_GET['unarchive'])) {
+    $userId = $_GET['unarchive'];
+
+    // Perform the SQL query to update the user's status to active (assuming 'status' is the field name)
+    $unarchiveSql = "UPDATE user SET status = 0 WHERE id = $userId";
+    $unarchiveResult = mysqli_query($con, $unarchiveSql);
+
+    if ($unarchiveResult) {
+        // Redirect back to the ViewUser.php or any appropriate page
+        header("Location: ViewUser.php");
+        exit();
+    } else {
+        echo "Failed to unarchive user. Please try again. Error: " . mysqli_error($con);
+    }
+}
+$sql = "SELECT * FROM user WHERE status = 0";
 $res = mysqli_query($con, $sql) or die(mysqli_error($con));
+
+// ... rest of your code remains the same ...
 ?>
+
 <?php
     include_once '../AdminSession.php';
     $uname = $_SESSION['email'];
@@ -220,23 +239,45 @@ $res = mysqli_query($con, $sql) or die(mysqli_error($con));
                 </tr>
             </thead>
             <tbody>
-                <?php
-                while ($row = mysqli_fetch_assoc($res)) {
-                    echo "<tr>
-                            <td>{$row['id']}</td>
-                            <td>{$row['fname']}</td>
-                            <td>{$row['lname']}</td>
-                            <td>{$row['phone']}</td>
-                            <td>{$row['email']}</td>
-                            <td>{$row['type']}</td>
-                            <td><a href=\"delete.php?data={$row['id']}\" class='btn btn-danger'>Delete</a></td>
-                            <td><a href=\"Edit.php?data={$row['id']}\" class='btn btn-primary'>Edit</a></td>
+    <?php
+    // Display active users
+    $sqlActive = "SELECT * FROM user WHERE status = 0";
+    $resActive = mysqli_query($con, $sqlActive) or die(mysqli_error($con));
+    while ($row = mysqli_fetch_assoc($resActive)) {
+        echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['fname']}</td>
+                <td>{$row['lname']}</td>
+                <td>{$row['phone']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['type']}</td>
+                <td><a href=\"archive.php?data={$row['id']}\" class='btn btn-warning'>Archive</a></td>
+                <td><a href=\"Edit.php?data={$row['id']}\" class='btn btn-primary'>Edit</a></td>
+              </tr>";
+    }
+    ?>
+</tbody>
+       <!-- Display archived users -->
+<h2>Archived Users</h2>
+<tbody>
+    <?php
+    $sqlArchived = "SELECT * FROM user WHERE status = 1";
+    $resArchived = mysqli_query($con, $sqlArchived) or die(mysqli_error($con));
+    while ($row = mysqli_fetch_assoc($resArchived)) {
+        echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['fname']}</td>
+                <td>{$row['lname']}</td>
+                <td>{$row['phone']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['type']}</td>
+                <td><a href=\"ViewUser.php?unarchive={$row['id']}\" class='btn btn-success'>Unarchive</a></td>
+              </tr>";
+    }
+    mysqli_close($con);
+    ?>
+</tbody>
 
-                          </tr>";
-                }
-                mysqli_close($con);
-                ?>
-            </tbody>
         </table>
     </div>
 </div>

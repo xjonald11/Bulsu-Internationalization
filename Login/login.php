@@ -78,6 +78,12 @@
                                         <div class="form-group text-center">
                                             <input type="submit" class="btn btn-primary" name="submit" value="Login" />
                                         </div>
+                                        <!-- Within the form section -->
+<div class="form-group text-center">
+    <a href="forgetPassword.php">Forgot Password?</a>
+</div>
+
+    </div>
                                     </form>
                                     <hr>
      
@@ -91,7 +97,6 @@
 
         </div>
 
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

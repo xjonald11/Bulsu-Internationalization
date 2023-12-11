@@ -236,9 +236,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" class="form-control" name="event_title" required>
     </div>
     <div class="form-group">
-        <label for="event_date">Event Date</label>
-        <input type="date" class="form-control" name="event_date" required>
-    </div>
+    <label for="event_date">Event Date</label>
+    <input type="date" class="form-control" name="event_date" min="<?php echo date('Y-m-d'); ?>" required>
+</div>
     <div class="form-group">
         <label for="description">Description</label>
         <textarea class="form-control" name="description" rows="3" required></textarea>

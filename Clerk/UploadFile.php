@@ -225,20 +225,31 @@ if (isset($_POST['submit'])) {
                 <!-- Begin Page Content -->
                 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-6">
-            <h1>Clerk Upload</h1>
-            <form enctype="multipart/form-data" action="" name="form" method="post">
-                <div class="form-group">
-                    <label for="file">Select File</label>
-                    <input type="file" class="form-control" name="file" id="file">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" name="description" id="description"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
-            </form>
+    <div class="col-md-6">
+    <h1>Clerk Upload</h1>
+    <form enctype="multipart/form-data" action="" name="form" method="post">
+        <div class="form-group">
+            <label for="file">Select File</label>
+            <input type="file" class="form-control" name="file" id="file">
         </div>
+        <div class="form-group">
+            <label for="fileType">File Type</label>
+            <select class="form-control" name="fileType" id="fileType">
+                <option value="type1">Foreign Travel Form</option>
+                <option value="type2">Certificate of Registration</option>
+                <option value="type3">Transcript of Record</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" id="description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+    </form>
+</div>
+
     </div>
 </div>
     <!-- /.container-fluid -->

@@ -204,36 +204,47 @@ $result = mysqli_query($con, "SELECT * FROM calendar_events");
 
                 <!-- Begin Page Content -->
                 <div class="container mt-5">
-        <h2 class="text-center">View Calendar Events</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Event Title</th>
-                    <th>Event Date</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>".$row['event_title']."</td>";
-                    echo "<td>".$row['event_date']."</td>";
-                    echo "<td>".$row['description']."</td>";
-                    echo "<td>
-                    <button class='btn btn-primary view-event-btn' data-toggle='modal' data-target='#viewEventModal' data-id='".$row['id']."'>View</button>
+    <h2 class="text-center">View Calendar Events</h2>
+    <table class="table">
+        <!-- Table headers -->
+        <thead>
+            <tr>
+                <th>Event Title</th>
+                <th>Event Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql = "SELECT * FROM calendar_events";
+            $result = mysqli_query($con, $sql);
 
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row['event_title'] . "</td>";
+                echo "<td>" . $row['event_date'] . "</td>";
+                echo "<td>" . $row['description'] . "</td>";
+                echo "<td>";
 
-                            <a href='EditEvent.php?id=".$row['id']."' class='btn btn-success'>Edit</a>
-                            <a href='DeleteEvent.php?id=".$row['id']."' class='btn btn-danger'>Delete</a>
-                          </td>";
-                    echo "</tr>";
+                echo "<button class='btn btn-primary view-event-btn' data-toggle='modal' data-target='#viewEventModal' data-id='" . $row['id'] . "'>View</button>";
+                echo "<a href='EditEvent.php?id=" . $row['id'] . "' class='btn btn-success'>Edit</a>";
+
+                if ($row['archived'] == 0) {
+                    // If the event is not archived, display the archive button
+                    echo "<a href='ArchiveEvent.php?id=" . $row['id'] . "' class='btn btn-danger'>Archive</a>";
+                } else {
+                    // If the event is archived, display the unarchive button
+                    echo "<a href='UnarchiveEvent.php?id=" . $row['id'] . "' class='btn btn-warning'>Unarchive</a>";
                 }
-                ?>
-            </tbody>
-        </table>
-    </div>
+
+                echo "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
