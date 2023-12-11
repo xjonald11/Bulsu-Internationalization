@@ -6,7 +6,7 @@
         $lname = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['lname'])));
         $phone = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['mobile'])));
         $email = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['email'])));
-        $password = htmlentities(stripslashes(mysqli_real_escape_string($con,$_POST['password'])));
+        $password = htmlentities(stripslashes(mysqli_real_escape_string($con,md5($_POST['password']))));
         
         $id = $_REQUEST['id'];
         

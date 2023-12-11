@@ -4,6 +4,11 @@ $username = "root";
 $password = "";
 $dbname = "doc_db";
 
+// $servername = "localhost";
+// $username = "u673355866_cmbulsu";
+// $password = "Ra#$324gfSd$@D";
+// $dbname = "u673355866_cmbulsu";
+
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // Set the PDO error mode to exception
